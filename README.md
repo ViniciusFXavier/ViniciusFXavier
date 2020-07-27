@@ -5,11 +5,11 @@
 </div>
 
 <p>
-	💻 I’m currently learning ThreeJS
+	💻 I’m currently learning ThreeJS, Realtime and P2P
 </p>
 
 <p align="left">
-  <img src="https://komarev.com/ghpvc/?username=ViniciusFXavier" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=ViniciusFXavier&style=flat-square&color=red" alt="Profile views" />
 </p>
 
 <!--
