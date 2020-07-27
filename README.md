@@ -1,3 +1,9 @@
+<div align="center">
+	<p>
+		<img src="https://raw.githubusercontent.com/ViniciusFXavier/ViniciusFXavier/master/header.svg" width="800" height="400">
+	</p>
+</div>
+
 <p>
 	💻 I’m currently learning ThreeJS
 </p>
