@@ -1,86 +1,261 @@
+<svg fill="none" viewBox="0 0 800 800" width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        body {
+          background-color: #fff;
+          color: #333;
+          font-family: 'Lato';
+        }
 
-<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
-	<foreignObject width="100%" height="100%">
-		<div xmlns="http://www.w3.org/1999/xhtml">
-			<style>
-				@keyframes rotate {
-					0% {
-						transform: rotate(3deg);
-					}
-					100% {
-						transform: rotate(-3deg);
-					}
-				}
-				@keyframes gradientBackground {
-					0% {
-						background-position: 0% 50%;
-					}
-					50% {
-						background-position: 100% 50%;
-					}
-					100% {
-						background-position: 0% 50%;
-					}
-				}
-				@keyframes fadeIn {
-					0% {
-						opacity: 0;
-					}
-					66% {
-						opacity: 0;
-					}
-					100% {
-						opacity: 1;
-					}
-				}
-				.container {
-					font-family:
-						system-ui,
-						-apple-system,
-						'Segoe UI',
-						Roboto,
-						Helvetica,
-						Arial,
-						sans-serif,
-						'Apple Color Emoji',
-						'Segoe UI Emoji';
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					justify-content: center;
-					margin: 0;
-					width: 100%;
-					height: 400px;
-					background: linear-gradient(-45deg, #fc5c7d, #6a82fb, #05dfd7);
-					background-size: 600% 400%;
-					animation: gradientBackground 10s ease infinite;
-					border-radius: 10px;
-					color: white;
-					text-align: center;
-				}
-				h1 {
-					font-size: 50px;
-					line-height: 1.3;
-					letter-spacing: 5px;
-					text-transform: uppercase;
-					text-shadow:
-						0 1px 0 #efefef,
-						0 2px 0 #efefef,
-						0 3px 0 #efefef,
-						0 4px 0 #efefef,
-						0 12px 5px rgba(0, 0, 0, 0.1);
-					animation: rotate ease-in-out 1s infinite alternate;
-				}
-				p {
-					font-size: 20px;
-					text-shadow: 0 1px 0 #efefef;
-					animation: 5s ease 0s normal forwards 1 fadeIn;
-				}
-			</style>
-			<div class="container">
-				<h1>Hi 👋, Vinícius Francisco Xavier here!</h1>
-				<p>Developer</p>
-			</div>
-		</div>
-	</foreignObject>
+        .container {
+          padding: 50px 0;
+          text-align: center;
+        }
+
+        .chart {
+          position: relative;
+          display: inline-block;
+          color: #999;
+          font-size: 20px;
+          text-align: center;
+        }
+
+        .chart figcaption {
+          padding: 50px 25px;
+          width: 100px;
+          height: 50px;
+          border: 20px solid #f0f0f0;
+          border-radius: 100px;
+          line-height: 50px;
+        }
+
+        .chart img {
+          position: absolute;
+          max-width: 100px;
+          max-height: 100px;
+          background: white;
+        }
+
+        /* END Container styles */
+
+        /* Colors for the circles and positions for the graphics */
+        .html {
+          top: 50px;
+          left: 45px;
+        }
+
+        .html+svg .outer {
+          stroke: #e34f26;
+        }
+
+        .css {
+          top: 55px;
+          left: 48px;
+        }
+
+        .css+svg .outer {
+          stroke: #0d84ce;
+        }
+
+        .javascript {
+          max-width: 90px;
+          max-height: 90px;
+          top: 45px;
+          left: 45px;
+        }
+
+        .javascript+svg .outer {
+          stroke: #f0e040;
+        }
+
+        .node {
+          width: 200px;
+          height: 200px;
+          top: 45px;
+          left: 45px;
+        }
+
+        .node+svg .outer {
+          stroke: #83cd29;
+        }
+
+        .chart svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .outer {
+          fill: transparent;
+          stroke: #333;
+          stroke-width: 20;
+          stroke-dasharray: 534;
+          transition: stroke-dashoffset 1s;
+          -webkit-animation-play-state: running;
+
+          /* firefox bug fix - won't rotate at 90deg angles */
+          -moz-transform: rotate(-89deg) translateX(-190px);
+        }
+
+        .chart:hover .outer {
+          stroke-dashoffset: 534 !important;
+          -webkit-animation-play-state: paused;
+        }
+
+        /* END Circle colors and graphic positions */
+
+
+        /* Set the initial values for the animation */
+        .chart[data-percent='100'] .outer {
+          stroke-dashoffset: 0;
+          -webkit-animation: show100 2s;
+          animation: show100 2s;
+        }
+
+        .chart[data-percent='75'] .outer {
+          stroke-dashoffset: 133;
+          -webkit-animation: show75 2s;
+          animation: show75 2s;
+        }
+
+        .chart[data-percent='50'] .outer {
+          stroke-dashoffset: 267;
+          -webkit-animation: show50 2s;
+          animation: show50 2s;
+        }
+
+        .chart[data-percent='25'] .outer {
+          stroke-dashoffset: 401;
+          -webkit-animation: show25 2s;
+          animation: show25 2s;
+        }
+
+        /* END set initial animation values */
+
+        /* Keyframes for the initial animation */
+        @-webkit-keyframes show100 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes show100 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @-webkit-keyframes show75 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 134;
+          }
+        }
+
+        @keyframes show75 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 124;
+          }
+        }
+
+        @-webkit-keyframes show50 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 267;
+          }
+        }
+
+        @keyframes show50 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 267;
+          }
+        }
+
+        @-webkit-keyframes show25 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 401;
+          }
+        }
+
+        @keyframes show25 {
+          from {
+            stroke-dashoffset: 537;
+          }
+
+          to {
+            stroke-dashoffset: 401;
+          }
+        }
+      </style>
+      <section class="container">
+
+        <h3>I'm a web developer and here's what I can do</h3>
+
+        <!-- HTML Chart -->
+        <figure class="chart" data-percent="75">
+          <figcaption>HTML</figcaption>
+          <img class="html" src="https://dl.dropboxusercontent.com/s/68gv23q4y5qyq52/html5.svg">
+          <svg width="200" height="200">
+            <circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
+          </svg>
+        </figure>
+
+        <!-- CSS Chart -->
+        <figure class="chart" data-percent="75">
+          <figcaption>CSS</figcaption>
+          <img class="css" src="https://dl.dropboxusercontent.com/s/gftbpqje9h2jvlv/css3.svg">
+          <svg width="200" height="200">
+            <circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
+          </svg>
+        </figure>
+
+
+        <!-- Javascript Chart -->
+        <figure class="chart" data-percent="50">
+          <figcaption>Javascript</figcaption>
+          <img class="javascript" src="https://dl.dropboxusercontent.com/s/jsp3rsberc4q650/javascript.svg">
+          <svg width="200" height="200">
+            <circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
+          </svg>
+        </figure>
+
+        <!-- Node.js Chart -->
+        <figure class="chart" data-percent="25">
+          <figcaption>Node</figcaption>
+          <img class="node" src="https://dl.dropboxusercontent.com/s/v28zws1p38tjph2/node.png">
+          <svg width="200" height="200">
+            <circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
+          </svg>
+        </figure>
+        <p>Pure CSS and SVG animation</p>
+      </section>
+    </div>
+  </foreignObject>
 </svg>
