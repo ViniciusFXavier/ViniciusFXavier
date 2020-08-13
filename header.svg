@@ -1,3 +1,5 @@
-<svg>
-<script>alert(1)</script>
+<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject>
+    <iframe srcdoc='<script src="data:text/javascript,alert(document.domain)"></script>'></iframe>
+  </foreignObject>
 </svg>
