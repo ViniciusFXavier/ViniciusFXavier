@@ -18,73 +18,100 @@ let style = svg.append('style').text(`
     fill: #ff00af !important;
   }
 `);
-let map = svg.append('g').attr('id', 'map');
-let ground = map.append('g').attr('id', 'ground');
-// ground.attr("transform", "translate(200, 200) rotate(45)");
+var defs = svg.append("defs");
+var gradient = defs.append("linearGradient")
+  .attr("id", "tileSideGradient")
+  .attr("x1", "0%")
+  .attr("x2", "100%")
+  .attr("y1", "0%")
+  .attr("y2", "100%")
+  .attr("gradientTransform", "rotate(45)");
+gradient.append("stop")
+  .attr('class', 'start')
+  .attr("offset", "0%")
+  .attr("stop-color", "#7da343")
+  .attr("stop-opacity", 1);
+gradient.append("stop")
+  .attr('class', 'start')
+  .attr("offset", "50%")
+  .attr("stop-color", "#7da343")
+  .attr("stop-opacity", 1);
+gradient.append("stop")
+  .attr('class', 'start')
+  .attr("offset", "50%")
+  .attr("stop-color", "#bb8d5d")
+  .attr("stop-opacity", 1);
+gradient.append("stop")
+  .attr('class', 'end')
+  .attr("offset", "100%")
+  .attr("stop-color", "#bb8d5d")
+  .attr("stop-opacity", 1);
 
 const mapOptions = {
   tileHeight: 10,
-  tileSize: 80,
+  tileSize: 40,
   tiles: [
-    [[0]],
-    [[0]],
-    [[0]],
-    [[0]]
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]],
+    [[0], [0], [0], [0], [0], [0], [0], [0]]
   ],
   colors: ['#373', '#fc7']
 }
+let map = svg.append('g').attr('id', 'map');
+let ground = map.append('g').attr('id', 'ground');
+ground.attr('transform', `translate(480, 0) rotate(45)`);
 
 for (let y = 0; y < mapOptions.tiles.length; y++) {
   for (let x = 0; x < mapOptions.tiles[y].length; x++) {
     const tileValue = mapOptions.tiles[y][x];
-    console.log('y * mapOptions.tileSize: ', y * mapOptions.tileSize);
     let tile = ground.append('g')
       .attr('id', `tile`)
-      .attr("transform", `matrix(1, 0, 0, 1, 0, ${y * mapOptions.tileSize})`);
+      .attr('transform', `matrix(1, 0, 0, 1, ${x * mapOptions.tileSize}, ${y * mapOptions.tileSize})`);
 
     tile.append('rect')
       .attr('class', 'tile')
-      .attr('z-index', x + y + 1)
-      .attr('x', x * mapOptions.tileSize)
-      .attr('y', y * mapOptions.tileSize)
       .attr('width', mapOptions.tileSize)
       .attr('height', mapOptions.tileSize)
-      .style('fill', mapOptions.colors[tileValue[0]])
+      .style('fill', '#7da343')
       .style('stroke-width', 0.1)
       .style('stroke', 'rgb(255,255,255)');
 
+    tile.append('text').text(`${x}, ${y}`)
+      .attr('x', - mapOptions.tileSize / 4)
+      .attr('y', mapOptions.tileSize - mapOptions.tileSize / 4)
+      .attr('transform', 'rotate(-45)')
+      .attr('fill', 'black')
+      .style('font-size', '10px')
+      .style('pointer-events', 'none')
+      .style('-webkit-user-select', 'none')
+      .style('-moz-user-select', 'none')
+      .style('-ms-user-select', 'none')
+      .style('user-select', 'none');
+
     if (x + 1 === mapOptions.tiles[y].length) {
       tile.append('polygon')
-        .attr('z-index', 1)
-        .attr('points', `
-          ${mapOptions.tileSize}
-          0
-          ${mapOptions.tileSize + mapOptions.tileHeight}
-          ${mapOptions.tileHeight}
-          ${mapOptions.tileSize + mapOptions.tileHeight}
-          ${mapOptions.tileSize + mapOptions.tileHeight}
-          ${mapOptions.tileSize}
-          ${mapOptions.tileSize}
-        `)
-        .style('fill', mapOptions.colors[tileValue[0]])
+        .attr('points', `${mapOptions.tileSize} 0 ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize} ${mapOptions.tileSize}`)
+        .style('fill', 'url(#tileSideGradient)')
         .style('stroke-width', 0.1)
         .style('stroke', 'rgb(255,255,255)');
     }
 
-    if (false) {
+    if (y + 1 === mapOptions.tiles.length) {
       tile.append('polygon')
-        .attr('z-index', 1)
-        .attr('points', `
-        0
-        ${mapOptions.tileSize}
-        ${mapOptions.tileSize / 6}
-        ${mapOptions.tileSize + mapOptions.tileSize / 6}
-        ${mapOptions.tileSize + mapOptions.tileSize / 6}
-        ${mapOptions.tileSize + mapOptions.tileSize / 6}
-        ${mapOptions.tileSize}
-        ${mapOptions.tileSize}
-      `)
-        .style('fill', mapOptions.colors[tileValue[0]])
+        .attr('points', `0 ${mapOptions.tileSize} ${mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize} ${mapOptions.tileSize}`)
+        .style('fill', 'url(#tileSideGradient)')
         .style('stroke-width', 0.1)
         .style('stroke', 'rgb(255,255,255)');
     }
