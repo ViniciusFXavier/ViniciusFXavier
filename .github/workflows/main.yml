@@ -22,7 +22,7 @@ jobs:
           npm install
 
     - name: Update game.svg
-      run: node index.js
+      run: node index.js > game.svg
 
     - name: Commit change & Push
       run: |
