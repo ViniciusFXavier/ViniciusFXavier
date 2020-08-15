@@ -132,4 +132,5 @@ for (let y = 0; y < mapOptions.tiles.length; y++) {
   }
 }
 
-fs.writeFileSync('game.svg', body.html());
+// fs.writeFileSync('game.svg', body.html());
+console.log(body.html());
