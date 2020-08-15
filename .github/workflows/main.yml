@@ -23,9 +23,11 @@ jobs:
 
     - name: Update game.svg
       run: node index.js
+
     - name: Commit change & Push
       run: |
           git config user.name 'github-actions[bot]'
           git config user.email '40774281+ViniciusFXavier@users.noreply.github.com'
+          git add --all
           git commit -am "BOT: update game.svg automatically"
           git push
