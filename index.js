@@ -19,59 +19,72 @@ let style = svg.append('style').text(`
   }
 `);
 var defs = svg.append("defs");
-var gradient = defs.append("linearGradient")
-  .attr("id", "tileSideGradient")
+
+var tileSideGradientLeft = defs.append("linearGradient")
+  .attr("id", "tileSideGradientLeft")
   .attr("x1", "0%")
   .attr("x2", "100%")
   .attr("y1", "0%")
   .attr("y2", "100%")
-  .attr("gradientTransform", "rotate(45)");
-gradient.append("stop")
+  .attr("gradientTransform", "rotate(-45)");
+tileSideGradientLeft.append("stop")
   .attr('class', 'start')
   .attr("offset", "0%")
   .attr("stop-color", "#7da343")
   .attr("stop-opacity", 1);
-gradient.append("stop")
+tileSideGradientLeft.append("stop")
   .attr('class', 'start')
   .attr("offset", "50%")
   .attr("stop-color", "#7da343")
   .attr("stop-opacity", 1);
-gradient.append("stop")
+tileSideGradientLeft.append("stop")
   .attr('class', 'start')
   .attr("offset", "50%")
   .attr("stop-color", "#bb8d5d")
   .attr("stop-opacity", 1);
-gradient.append("stop")
+tileSideGradientLeft.append("stop")
   .attr('class', 'end')
   .attr("offset", "100%")
   .attr("stop-color", "#bb8d5d")
   .attr("stop-opacity", 1);
 
+var tileSideGradientRight = defs.append("linearGradient")
+.attr("id", "tileSideGradientRight")
+.attr("x1", "0%")
+.attr("x2", "100%")
+.attr("y1", "0%")
+.attr("y2", "100%")
+.attr("gradientTransform", "rotate(45)");
+tileSideGradientRight.append("stop")
+.attr('class', 'start')
+.attr("offset", "0%")
+.attr("stop-color", "#7da343")
+.attr("stop-opacity", 1);
+tileSideGradientRight.append("stop")
+.attr('class', 'start')
+.attr("offset", "50%")
+.attr("stop-color", "#7da343")
+.attr("stop-opacity", 1);
+tileSideGradientRight.append("stop")
+.attr('class', 'start')
+.attr("offset", "50%")
+.attr("stop-color", "#bb8d5d")
+.attr("stop-opacity", 1);
+tileSideGradientRight.append("stop")
+.attr('class', 'end')
+.attr("offset", "100%")
+.attr("stop-color", "#bb8d5d")
+.attr("stop-opacity", 1);
+
 const mapOptions = {
   tileHeight: 10,
   tileSize: 40,
-  tiles: [
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]],
-    [[0], [0], [0], [0], [0], [0], [0], [0]]
-  ],
+  tiles: Array.from(Array(12), () => new Array(12)),
   colors: ['#373', '#fc7']
 }
 let map = svg.append('g').attr('id', 'map');
 let ground = map.append('g').attr('id', 'ground');
-ground.attr('transform', `translate(480, 0) rotate(45)`);
+ground.attr('transform', `translate(340, 0) rotate(45)`);
 
 for (let y = 0; y < mapOptions.tiles.length; y++) {
   for (let x = 0; x < mapOptions.tiles[y].length; x++) {
@@ -103,7 +116,8 @@ for (let y = 0; y < mapOptions.tiles.length; y++) {
     if (x + 1 === mapOptions.tiles[y].length) {
       tile.append('polygon')
         .attr('points', `${mapOptions.tileSize} 0 ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize} ${mapOptions.tileSize}`)
-        .style('fill', 'url(#tileSideGradient)')
+        .style('fill', 'url(#tileSideGradientLeft)')
+        .attr("gradientTransform", "rotate(45)")
         .style('stroke-width', 0.1)
         .style('stroke', 'rgb(255,255,255)');
     }
@@ -111,7 +125,7 @@ for (let y = 0; y < mapOptions.tiles.length; y++) {
     if (y + 1 === mapOptions.tiles.length) {
       tile.append('polygon')
         .attr('points', `0 ${mapOptions.tileSize} ${mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize + mapOptions.tileHeight} ${mapOptions.tileSize} ${mapOptions.tileSize}`)
-        .style('fill', 'url(#tileSideGradient)')
+        .style('fill', 'url(#tileSideGradientRight)')
         .style('stroke-width', 0.1)
         .style('stroke', 'rgb(255,255,255)');
     }
