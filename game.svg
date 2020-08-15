@@ -1,19 +1,27 @@
-<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg"><g id="map"><g id="ground"><g id="tile(0,0)"><rect x="0" y="0" width="64" height="64" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon points="
-        64
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg"><style>
+  .tile {
+    fill: #eee;
+    stroke: #a9a9a9;
+  }
+  .tile:hover {
+    fill: #ff00af !important;
+  }
+</style><g id="map"><g id="ground"><g id="tile"><rect class="tile" z-index="1" x="0" y="0" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
+        80
         0
-        74.66666666666667
-        10.666666666666666
-        74.66666666666667
-        74.66666666666667
-        64
-        64
-      " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon><polygon points="
-        0
-        64
-        10.666666666666666
-        74.66666666666667
-        74.66666666666667
-        74.66666666666667
-        64
-        64
-      " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g></g></g></svg>
+        93.33333333333333
+        13.333333333333334
+        173.33333333333334
+        93.33333333333333
+        160
+        80
+      " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g><g id="tile"><rect class="tile" z-index="2" x="80" y="0" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect></g><g id="tile"><rect class="tile" z-index="2" x="0" y="80" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
+        160
+        1
+        173.33333333333334
+        13.333333333333334
+        173.33333333333334
+        93.33333333333333
+        160
+        80
+      " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g><g id="tile"><rect class="tile" z-index="3" x="80" y="80" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect></g></g></g></svg>
