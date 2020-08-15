@@ -23,10 +23,13 @@ let ground = map.append('g').attr('id', 'ground');
 // ground.attr("transform", "translate(200, 200) rotate(45)");
 
 const mapOptions = {
+  tileHeight: 10,
   tileSize: 80,
   tiles: [
-    [[0], [0]],
-    [[0], [0]]
+    [[0]],
+    [[0]],
+    [[0]],
+    [[0]]
   ],
   colors: ['#373', '#fc7']
 }
@@ -34,7 +37,11 @@ const mapOptions = {
 for (let y = 0; y < mapOptions.tiles.length; y++) {
   for (let x = 0; x < mapOptions.tiles[y].length; x++) {
     const tileValue = mapOptions.tiles[y][x];
-    let tile = ground.append('g').attr('id', `tile`);
+    console.log('y * mapOptions.tileSize: ', y * mapOptions.tileSize);
+    let tile = ground.append('g')
+      .attr('id', `tile`)
+      .attr("transform", `matrix(1, 0, 0, 1, 0, ${y * mapOptions.tileSize})`);
+
     tile.append('rect')
       .attr('class', 'tile')
       .attr('z-index', x + y + 1)
@@ -46,22 +53,19 @@ for (let y = 0; y < mapOptions.tiles.length; y++) {
       .style('stroke-width', 0.1)
       .style('stroke', 'rgb(255,255,255)');
 
-    console.log('y: ', y);
-    console.log('x: ', x);
-    console.log('mapOptions.tiles[y].length: ', mapOptions.tiles[y].length);
-    if (x === 0) {
+    if (x + 1 === mapOptions.tiles[y].length) {
       tile.append('polygon')
         .attr('z-index', 1)
         .attr('points', `
-        ${mapOptions.tileSize + (mapOptions.tileSize * y)}
-        ${y}
-        ${mapOptions.tileSize + (mapOptions.tileSize * y) + mapOptions.tileSize / 6}
-        ${mapOptions.tileSize / 6}
-        ${mapOptions.tileSize + mapOptions.tileSize + mapOptions.tileSize / 6 }
-        ${mapOptions.tileSize + mapOptions.tileSize / 6}
-        ${mapOptions.tileSize + mapOptions.tileSize}
-        ${mapOptions.tileSize}
-      `)
+          ${mapOptions.tileSize}
+          0
+          ${mapOptions.tileSize + mapOptions.tileHeight}
+          ${mapOptions.tileHeight}
+          ${mapOptions.tileSize + mapOptions.tileHeight}
+          ${mapOptions.tileSize + mapOptions.tileHeight}
+          ${mapOptions.tileSize}
+          ${mapOptions.tileSize}
+        `)
         .style('fill', mapOptions.colors[tileValue[0]])
         .style('stroke-width', 0.1)
         .style('stroke', 'rgb(255,255,255)');

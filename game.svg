@@ -6,22 +6,40 @@
   .tile:hover {
     fill: #ff00af !important;
   }
-</style><g id="map"><g id="ground"><g id="tile"><rect class="tile" z-index="1" x="0" y="0" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
-        80
-        0
-        93.33333333333333
-        13.333333333333334
-        173.33333333333334
-        93.33333333333333
-        160
-        80
-      " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g><g id="tile"><rect class="tile" z-index="2" x="80" y="0" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect></g><g id="tile"><rect class="tile" z-index="2" x="0" y="80" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
-        160
-        1
-        173.33333333333334
-        13.333333333333334
-        173.33333333333334
-        93.33333333333333
-        160
-        80
-      " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g><g id="tile"><rect class="tile" z-index="3" x="80" y="80" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect></g></g></g></svg>
+</style><g id="map"><g id="ground"><g id="tile" transform="matrix(1, 0, 0, 1, 0, 0)"><rect class="tile" z-index="1" x="0" y="0" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
+          80
+          0
+          90
+          10
+          90
+          90
+          80
+          80
+        " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g><g id="tile" transform="matrix(1, 0, 0, 1, 0, 80)"><rect class="tile" z-index="2" x="0" y="80" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
+          80
+          0
+          90
+          10
+          90
+          90
+          80
+          80
+        " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g><g id="tile" transform="matrix(1, 0, 0, 1, 0, 160)"><rect class="tile" z-index="3" x="0" y="160" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
+          80
+          0
+          90
+          10
+          90
+          90
+          80
+          80
+        " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g><g id="tile" transform="matrix(1, 0, 0, 1, 0, 240)"><rect class="tile" z-index="4" x="0" y="240" width="80" height="80" style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></rect><polygon z-index="1" points="
+          80
+          0
+          90
+          10
+          90
+          90
+          80
+          80
+        " style="fill: #373; stroke-width: 0.1; stroke: rgb(255,255,255);"></polygon></g></g></g></svg>
