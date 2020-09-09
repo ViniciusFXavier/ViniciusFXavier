@@ -5,7 +5,7 @@
 </div>
 
 <p>
-  💻 I’m currently learning ThreeJS, Realtime and P2P
+  💻 I’m currently learning ThreeJS, PlayCanvas, Realtime and P2P
 </p>
 
 <p align="left">
