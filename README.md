@@ -11,4 +11,5 @@
 <p align="left">
   <img src="https://komarev.com/ghpvc/?username=ViniciusFXavier&style=flat-square&color=red" alt="Profile views" />
   <img src="https://img.shields.io/github/followers/ViniciusFXavier?color=red&label=Followers&style=flat-square" alt="Followers" />
+  <img src="https://www.codewars.com/users/ViniciusFXavier/badges/small" alt="Codewars" />
 </p>
