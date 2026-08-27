@@ -1,0 +1,25 @@
+{
+  "name": "ViniciusFXavier",
+  "version": "0.0.1",
+  "description": "ViniciusFXavier",
+  "main": "./src/index.js",
+  "private": true,
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "I command here",
+  "dependencies": {
+    "svgo": "2.8.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0",
+    "nodemon": "2.0.15"
+  }
+}
